@@ -1,4 +1,13 @@
 Sugerime::Application.routes.draw do
+  resources :addresses
+
+
+  resources :states
+
+
+  resources :countries
+
+
   resources :keywords
 
 
