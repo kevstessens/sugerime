@@ -1,4 +1,27 @@
 Sugerime::Application.routes.draw do
+  resources :keywords
+
+
+  resources :inscriptions
+
+
+  resources :shoppings
+
+
+  resources :offers
+
+
+  resources :genres
+
+
+  resources :user_roles
+
+
+  resources :companies
+
+
+  devise_for :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
