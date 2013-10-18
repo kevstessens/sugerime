@@ -3,6 +3,8 @@
 
 <% if current_user.present? %>
 
+    <%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
+
     <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
     <% content_for :scripts do %>
@@ -47,11 +49,12 @@
                 for (shopping in Gmaps.map.markers) {
                     distance = getDistanceFromLatLonInKm(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng(), Gmaps.map.markers[shopping].lat, Gmaps.map.markers[shopping].lng);
                     if (distance < 200) {
-                        alert("Estás en el shopping!");
+
+                        $("#shopping_link").attr("href", "/shoppings/"+Gmaps.map.markers[shopping].shopping_id);
+                        $("#shopping_link").show();
                     }
 
                 }
-
 
             }
 

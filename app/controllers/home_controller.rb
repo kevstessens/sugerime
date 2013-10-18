@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!
-
   def index
     @json = Address.where("shopping_id is not NULL").to_gmaps4rails do |address, marker|
 
@@ -12,6 +10,7 @@ class HomeController < ApplicationController
       #                   :height  => 32
       #               })
       marker.title   address.shopping.name
+      marker.json({ :shopping_id => address.shopping.id})
 
     end
   end
