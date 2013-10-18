@@ -15,8 +15,6 @@ class HomeController < ApplicationController
       marker.sidebar "i'm the sidebar"
       #marker.json({ :id => address.id, :foo => "bar" })
 
-      @user = current_user
-
     end
   end
 end

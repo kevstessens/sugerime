@@ -1,25 +1,33 @@
 <h1>Sugerime</h1>
 <p>Bienvenido a Sugerime</p>
 
-<%= gmaps("map_options" => {"detect_location" => true, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => true, "markers" => {"data" => @json}}) %>
+<% if current_user.present? %>
 
-<% content_for :scripts do %>
-<script type="text/javascript">
-    $().ready(function () {
-        Gmaps.map.geolocationSuccess = function() {
-            Gmaps.map.createMarker({Lat: Gmaps.map.userLocation.lat(),
-                Lng: Gmaps.map.userLocation.lng(),
-                rich_marker: null,
-                marker_picture: ""
-            });
+    <%= gmaps("map_options" => {"detect_location" => true, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => true, "markers" => {"data" => @json}}) %>
 
-            var user_id = "<%= @user.id %>";
+    <% content_for :scripts do %>
+    <script type="text/javascript">
+        $().ready(function () {
+            Gmaps.map.geolocationSuccess = function() {
+                Gmaps.map.createMarker({Lat: Gmaps.map.userLocation.lat(),
+                    Lng: Gmaps.map.userLocation.lng(),
+                    rich_marker: null,
+                    marker_picture: ""
+                });
 
-            $.post("http://localhost:3000/users/"+user_id+"/address", {
-               lat : Gmaps.map.userLocation.lat(),
-               lng : Gmaps.map.userLocation.lng()
-            });
-        }
-    })
-</script>
+                var user_id = "<%= current_user.id %>";
+
+                $.post("http://localhost:3000/users/"+user_id+"/address", {
+                   lat : Gmaps.map.userLocation.lat(),
+                   lng : Gmaps.map.userLocation.lng()
+                });
+            }
+        })
+    </script>
+    <% end %>
+
+<% else %>
+
+<b>Por favor ingrese</b>
+
 <% end %>
