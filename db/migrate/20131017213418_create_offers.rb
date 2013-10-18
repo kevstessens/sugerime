@@ -3,6 +3,7 @@ class CreateOffers < ActiveRecord::Migration
     create_table :offers do |t|
       t.string :description
       t.integer :company_id
+      t.integer :user_id
       t.datetime :expiration
 
       t.timestamps

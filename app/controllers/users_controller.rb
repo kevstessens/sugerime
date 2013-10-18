@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
     @users.each do |user|
       user_address = user.address
-      if (user_address.latitude.abs - shopping_address.latitude.abs).abs >
+      if user_address.distance_to([shopping_address.latitude,shopping_address.longitude]) > 200
+        @users.delete(user)
+      end
     end
 
 

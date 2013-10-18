@@ -6,6 +6,10 @@ class Address < ActiveRecord::Base
 
   acts_as_gmappable
 
+
+  geocoded_by :full_street_address   # can also be an IP address
+  reverse_geocoded_by :latitude, :longitude
+
   def gmaps4rails_address
 
   	"#{self.street} #{self.number}, #{self.city}, #{self.state}, #{self.country}" 

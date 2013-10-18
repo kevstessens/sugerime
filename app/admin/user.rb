@@ -8,8 +8,18 @@ ActiveAdmin.register User do
       f.input :name
       f.input :last_name
       f.input :birthdate
+      f.input :user_role, :as => :select
     end
     f.actions
   end
 
+
+  index do
+    column :id
+    column :email
+    column :name
+    column :last_name
+    column :birthdate
+    default_actions
+  end
 end

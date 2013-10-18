@@ -5,6 +5,6 @@ class Company < ActiveRecord::Base
   has_many :offers
   has_many :inscriptions
 
-  attr_accessible :name, :user_id
+  attr_accessible :name, :user_id, :shopping_id, :shopping
 
 end

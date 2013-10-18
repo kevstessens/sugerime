@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
     t.string   "street"
     t.string   "number"
     t.string   "city"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
   create_table "offers", :force => true do |t|
     t.string   "description"
     t.integer  "company_id"
+    t.integer  "user_id"
     t.datetime "expiration"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :company
+  has_one :user
   belongs_to :user_role
   belongs_to :genre
   has_many :inscriptions
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar
-  attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role, :address, :address_attributes
+  attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role_id, :address, :address_attributes
 
 
   accepts_nested_attributes_for :address

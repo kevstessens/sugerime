@@ -80,4 +80,14 @@ class OffersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_directed_offer
+    @offer = Offer.new
+    @offer.user_id = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @offer }
+    end
+  end
 end
