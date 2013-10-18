@@ -3,8 +3,9 @@ class CreateTableCompaniesKeywords < ActiveRecord::Migration
     create_table :companies_keywords do |t|
       t.integer :keyword_id
       t.integer :company_id
+      t.datetime :created_at,:default => DateTime.now
+      t.datetime :updated_at,:default => DateTime.now
 
-      t.timestamps
     end
   end
 end
