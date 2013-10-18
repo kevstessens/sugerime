@@ -91,15 +91,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_address
-
-    lat = params[:lat]
-    lng = params[:lng]
-    user = User.find(params[:id])
-
-    user.address.latitude = lat
-    user.address.longitude = lng
-
-    user.address.save
-  end
 end
