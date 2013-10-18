@@ -3,11 +3,12 @@
 
 <% if current_user.present? %>
 
-    <%= gmaps("map_options" => {"detect_location" => true, "center_on_user" => true, "auto_zoom" => true, "auto_adjust" => true, "markers" => {"data" => @json}}) %>
+    <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
     <% content_for :scripts do %>
     <script type="text/javascript">
         $().ready(function () {
+
             Gmaps.map.geolocationSuccess = function() {
                 Gmaps.map.createMarker({Lat: Gmaps.map.userLocation.lat(),
                     Lng: Gmaps.map.userLocation.lng(),
@@ -21,7 +22,26 @@
                    lat : Gmaps.map.userLocation.lat(),
                    lng : Gmaps.map.userLocation.lng()
                 });
+
+                var origin = new google.maps.LatLng(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng());
+                var destination = new google.maps.LatLng(Gmaps.map.markers[0].lat, Gmaps.map.markers[0].lng);
+
+                var service = new google.maps.DistanceMatrixService();
+                service.getDistanceMatrix(
+                        {
+                            origins: [origin],
+                            destinations: [destination],
+                            travelMode: google.maps.TravelMode.DRIVING,
+                            unitSystem: google.maps.UnitSystem.METRIC,
+                            avoidHighways: false,
+                            avoidTolls: false
+                        }, callback);
+
+                function callback(response, status) {
+                    console.log(response);
+                }
             }
+
         })
     </script>
     <% end %>

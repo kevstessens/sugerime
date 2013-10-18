@@ -11,7 +11,8 @@ class Address < ActiveRecord::Base
 
   def gmaps4rails_address
 
-  	"#{self.street} #{self.number}, #{self.city}, #{self.state}, #{self.country}" 
+  	"#{self.street} #{self.number}, #{self.city}, #{self.state}, #{self.country}"
+
   end
 
   def state

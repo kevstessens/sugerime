@@ -12,8 +12,6 @@ class HomeController < ApplicationController
       #                   :height  => 32
       #               })
       marker.title   address.shopping.name
-      marker.sidebar "i'm the sidebar"
-      #marker.json({ :id => address.id, :foo => "bar" })
 
     end
   end
