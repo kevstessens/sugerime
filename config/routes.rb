@@ -42,6 +42,8 @@ Sugerime::Application.routes.draw do
 
   resources :users
 
+  match '/users/:id/address' => 'users#update_address', :via => [:post]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
