@@ -2,7 +2,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where("user_role_id = ?", 1).all
+
+    shopping_address = Company.find(current_user.id).shopping.address
+
+    @users.each do |user|
+      user_address = user.address
+      if (user_address.latitude.abs - shopping_address.latitude.abs).abs >
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,6 +10,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :street
       t.string :number
       t.string :city
+      t.integer :user_id
+
 
       t.timestamps
     end

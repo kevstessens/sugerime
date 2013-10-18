@@ -29,6 +29,8 @@ gem 'activeadmin'
 
 gem 'devise'
 
+gem 'geocoder'
+
 gem 'nested_form'
 
 gem 'gmaps4rails'
