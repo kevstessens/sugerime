@@ -83,7 +83,8 @@ class OffersController < ApplicationController
 
   def new_directed_offer
     @offer = Offer.new
-    @offer.user_id = User.find(params[:id])
+    @offer.user_id = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

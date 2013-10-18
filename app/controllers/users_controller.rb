@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   def index
     @users = User.where("user_role_id = ?", 1).all
 
-    shopping_address = Company.find(current_user.id).shopping.address
+    shopping_address = Company.find(current_user.company.id).shopping.address
 
-    @users.each do |user|
-      user_address = user.address
-      if user_address.distance_to([shopping_address.latitude,shopping_address.longitude]) > 200
-        @users.delete(user)
-      end
-    end
+    #@users.each do |user|
+    #  user_address = user.address
+    #  if user_address.distance_to([shopping_address.latitude,shopping_address.longitude]) > 200
+    #    @users.delete(user)
+    #  end
+    #end
 
 
     respond_to do |format|

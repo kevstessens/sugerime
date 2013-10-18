@@ -19,7 +19,7 @@
     <td><%= user.name %></td>
     <td><%= user.last_name %></td>
     <td><%= user.birthdate %></td>
-    <td><%= link_to 'Nueva oferta', offers_new_directed_offer_path(user) %></td>
+    <td><%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => user.id) %></td>
   </tr>
 <% end %>
 </table>

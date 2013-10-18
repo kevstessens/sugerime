@@ -16,8 +16,8 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :company_id %><br />
-    <%= f.number_field :company_id %>
+    <br/>
+    <%= f.hidden_field :company_id, :value => Company.where(:user_id => current_user.id).first.id %>
   </div>
   <div class="field">
     <%= f.label :expiration %><br />
