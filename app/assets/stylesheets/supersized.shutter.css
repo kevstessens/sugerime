@@ -130,7 +130,7 @@ ul#slide-list li a:hover {
     float: right;
     margin-top: 1px;
     border-left: 1px solid #333;
-    background: url('/assets//supersized/bg-hover.png') repeat-x 0 44px;
+    background: url('/assets/supersized/bg-hover.png') repeat-x 0 44px;
 }
 
 #tray-button:hover {
@@ -147,14 +147,14 @@ ul#slide-list li a:hover {
     left: 0;
     height: 8px;
     width: 100%;
-    background: url('/assets//supersized/progress-back.png') repeat-x;
+    background: url('/assets/supersized/progress-back.png') repeat-x;
 }
 
 #progress-bar {
     position: relative;
     height: 8px;
     width: 100%;
-    background: url('/assets//supersized/progress-bar.png') repeat-x;
+    background: url('/assets/supersized/progress-bar.png') repeat-x;
 }
 
 /* Thumbnail Navigation
@@ -200,7 +200,7 @@ ul#slide-list li a:hover {
     z-index: 3;
     bottom: 0;
     left: 0;
-    background: url(/assets//bg-black.png);
+    background: url(/assets/bg-black.png);
     height: 150px;
     width: 100%;
     overflow: hidden;
@@ -220,12 +220,12 @@ ul#slide-list li a:hover {
 
 #thumb-back {
     left: 0;
-    background: url('/assets//supersized/thumb-back.png') no-repeat center center;
+    background: url('/assets/supersized/thumb-back.png') no-repeat center center;
 }
 
 #thumb-forward {
     right: 0;
-    background: url('/assets//supersized/thumb-forward.png') no-repeat center center;
+    background: url('/assets/supersized/thumb-forward.png') no-repeat center center;
 }
 
 #thumb-back:hover, #thumb-forward:hover {

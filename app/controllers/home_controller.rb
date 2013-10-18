@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!
+  #skip_before_filter :authenticate_user!
 
   def index
     @json = Address.where("shopping_id is not NULL").to_gmaps4rails do |address, marker|

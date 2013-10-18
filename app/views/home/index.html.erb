@@ -1,7 +1,6 @@
 <h1>Sugerime</h1>
 <p>Bienvenido a Sugerime</p>
 
-<% if current_user.present? %>
 
     <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
@@ -46,8 +45,3 @@
     </script>
     <% end %>
 
-<% else %>
-
-<b>Por favor ingrese</b>
-
-<% end %>
