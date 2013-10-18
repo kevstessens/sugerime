@@ -24,6 +24,8 @@ end
 gem "omniauth-google-oauth2"
 
 gem "jquery-rails", "< 3.0.0"
+gem 'jquery-ui-rails'
+
 
 gem 'activeadmin'
 

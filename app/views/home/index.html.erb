@@ -1,7 +1,6 @@
 <h1>Sugerime</h1>
 <p>Bienvenido a Sugerime</p>
 
-<% if current_user.present? %>
 
     <%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
 
@@ -62,8 +61,3 @@
     </script>
     <% end %>
 
-<% else %>
-
-<b>Por favor ingrese</b>
-
-<% end %>
