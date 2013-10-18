@@ -1,11 +1,9 @@
 class User < ActiveRecord::Base
   has_one :company
-  has_one :user
   belongs_to :user_role
   belongs_to :genre
   has_many :inscriptions
   has_one :address
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,8 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar
   attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role_id, :address, :address_attributes
 
-
   accepts_nested_attributes_for :address
+
   # METHODS ---------------------------------------------
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)

@@ -91,4 +91,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_address
+
+    lat = params[:lat]
+    lng = params[:lng]
+    user = User.find(params[:id])
+
+    if user.address.nil?
+      address = Address.new(:user_id => user.id, :latitude => lat, :longitude => lng, :gmaps => true)
+      address.save
+    else
+      user.address.latitude = lat
+      user.address.longitude = lng
+      user.address.save
+    end
+
+    render :nothing => true, :status => 200, :content_type => 'text/html'
+
+  end
 end
