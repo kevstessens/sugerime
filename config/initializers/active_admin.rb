@@ -206,5 +206,6 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 
+  config.skip_before_filter :authenticate_user!
 
 end
