@@ -1,4 +1,7 @@
 Sugerime::Application.routes.draw do
+
+  root to: "home#index"
+
   resources :addresses
 
 
@@ -29,13 +32,15 @@ Sugerime::Application.routes.draw do
   resources :companies
 
 
-  devise_for :users
+  #devise_for :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :users
+  #Google OAuth
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

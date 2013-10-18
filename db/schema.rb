@@ -31,14 +31,15 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
   create_table "addresses", :force => true do |t|
     t.integer  "country_id"
     t.integer  "state_id"
+    t.integer  "shopping_id"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "street"
     t.string   "number"
     t.string   "city"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "admin_users", :force => true do |t|
@@ -134,6 +135,9 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
     t.string   "last_name"
     t.date     "birthdate"
     t.integer  "genre_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "avatar"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false

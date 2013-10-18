@@ -3,6 +3,7 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addresses do |t|
       t.integer :country_id
       t.integer :state_id
+      t.references :shopping
       t.float :latitude
       t.float :longitude
       t.boolean :gmaps

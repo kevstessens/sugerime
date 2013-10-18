@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<div class="login">
+  <% if !current_user %>
+    <%= link_to "Login", new_user_session_path %>
+    |
+    <%= link_to "Registrar", new_user_registration_path %>
+    | or
+    <%= link_to "Login con Google", user_omniauth_authorize_path(:google_oauth2) %>
+  <% else %>
+    <%= current_user.email %>
+    |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  <% end %>
+</div>
+
 <%= yield %>
 
 </body>
