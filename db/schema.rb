@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
   create_table "offers", :force => true do |t|
     t.string   "description"
     t.integer  "company_id"
-    t.integer  "user_id"
     t.datetime "expiration"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -137,9 +136,6 @@ ActiveRecord::Schema.define(:version => 20131017231730) do
     t.string   "last_name"
     t.date     "birthdate"
     t.integer  "genre_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "avatar"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false

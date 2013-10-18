@@ -1,6 +1,6 @@
 Sugerime::Application.routes.draw do
 
-  root to: "home#index"
+  root :to  =>"home#index"
 
   match 'offers/directed_offer' => 'offers#new_directed_offer'
 
@@ -98,6 +98,7 @@ Sugerime::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 
