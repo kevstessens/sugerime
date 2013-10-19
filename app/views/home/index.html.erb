@@ -2,7 +2,7 @@
 <p>Bienvenido a Sugerime</p>
 
 
-<%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
+<%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
 
 <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
@@ -54,7 +54,10 @@
                     distance = getDistanceFromLatLonInKm(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng(), Gmaps.map.markers[shopping].lat, Gmaps.map.markers[shopping].lng);
                     if (distance < 200) {
 
-                        $("#shopping_link").attr("href", "/shoppings/"+Gmaps.map.markers[shopping].shopping_id);
+                        $("#shopping_link").click(function() {
+                            window.location = "/shoppings/"+Gmaps.map.markers[shopping].shopping_id;
+                        });
+                        $("#shopping_link").val($("#shopping_link").val().replace('#NAME', Gmaps.map.markers[shopping].shopping_name));
                         $("#shopping_link").show();
                     }
 
@@ -65,4 +68,3 @@
         })
     </script>
 <% end %>
-

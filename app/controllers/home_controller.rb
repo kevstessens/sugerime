@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       #                   :height  => 32
       #               })
       marker.title   address.shopping.name
-      marker.json({ :shopping_id => address.shopping.id})
+      marker.json({ :shopping_id => address.shopping.id, :shopping_name => address.shopping.name})
 
     end
   end
