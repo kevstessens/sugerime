@@ -32,7 +32,7 @@
   <!-- End Js -->
   <%= csrf_meta_tags %>
 
-  <meta name="description" content="Insert Your Site Description" />
+  <meta name="description" content="Sugerime" />
 
   <!-- Mobile Specifics -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,21 +122,7 @@
           <span class="icon-bar"></span>
         </a>
         <img class="brand" src="/assets/logo_mini.png">
-        <div class="nav-collapse collapse navbar-responsive-collapse">
-          <ul class="nav">
-            <li class="active"><a href="#">Principal</a></li>
 
-          </ul>
-
-          <ul class="nav pull-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi Cuenta <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a><%= link_to "Logout", destroy_user_session_path, method: :delete %></a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.nav-collapse -->
       </div>
     </div><!-- /navbar-inner -->
   </div><!-- /navbar -->
