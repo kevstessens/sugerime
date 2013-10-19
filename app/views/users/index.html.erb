@@ -44,7 +44,7 @@
                 $.each(result[elem].directed_offers, function(o) {
                    other_offers += "<li>Local: "+result[elem].directed_offers[o].company.name+"</li><li>Oferta: "+result[elem].directed_offers[o].description+"</li>";
                 });
-
+                           console.log("<li><a href='/offers/directed_offer?user_id='"+result[elem].id+">Nueva oferta</a></li>")
                 $("#users_list").append("<li>"+
                         "<ul>"+
                         "<li>Nombre: "+result[elem].email+"</li>"+
@@ -55,7 +55,7 @@
                         other_offers+
                         "</ul>"+
                         "</li>"+
-                        "<li><a href='/offers/directed_offer?user_id='"+result[elem].id+">Nueva oferta</a></li>"+
+                        "<li><a href='/offers/directed_offer?user_id="+result[elem].id+"'>Nueva oferta</a></li>"+
                         "</ul>"+
                 "</li>");
             })
