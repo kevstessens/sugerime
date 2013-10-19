@@ -1,17 +1,17 @@
-<h1>Listing offers</h1>
+<h1>Ofertas</h1>
 
-<table>
+<table class="table table-condensed">
   <tr>
-    <th>Description</th>
-    <th>Company</th>
-    <th>Expiration</th>
+    <th>Descripcion</th>
+    <th>Compania</th>
+    <th>Expiracion</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @offers.each do |offer| %>
-  <tr>
+  <tr class="success">
     <td><%= offer.description %></td>
     <td><%= offer.company_id %></td>
     <td><%= offer.expiration %></td>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Offer', new_offer_path %>
+<%= link_to 'New Offer', new_offer_path, :class => "btn button-primary" %>
