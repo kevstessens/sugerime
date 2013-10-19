@@ -635,9 +635,10 @@ nav#menu #menu-nav li a:hover {
 }
 
 .border{
-    -moz-box-shadow: inset 0 0 5px 5px #000000;
-    -webkit-box-shadow: inset 0 0 5px 5px #000000;
-    box-shadow: inset 0 0 5px 5px #000000;
+    border: solid 2px #999999;
+    border-radius: 15px 0px 15px 0px;
+    box-shadow: 2px 2px 5px #999999;
+    background: #d0bfff;
 }
 
 .page-alternate {
