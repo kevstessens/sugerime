@@ -20,6 +20,7 @@ Country.create!(:name => "Argentina")
 
 State.delete_all
 State.create!(:name => "CABA", :country_id => 1)
+State.create!(:name => "Pilar", :country_id => 1)
 
 Keyword.delete_all
 Keyword.create!(:name => "Indumentaria Masculina")

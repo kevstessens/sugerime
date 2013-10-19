@@ -4,7 +4,22 @@
   <b>Name:</b>
   <%= @shopping.name %>
 </p>
+<h2>Hay <%=@companies_count%> locales esperandote</h2>
 
+<p>¿Qué estás buscando?</p>
 
-<%= link_to 'Edit', edit_shopping_path(@shopping) %> |
-<%= link_to 'Back', shoppings_path %>
+<%= semantic_form_for @user do |f| %>
+
+    <%= f.input :need %>
+
+    <%= f.input :keywords, :as => :check_boxes %>
+
+    <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
+
+    <%= f.actions do %>
+        <%= f.action :submit, :as => :button, :label => "Ingresar" %>
+        <%= f.action :cancel, :as => :link, :label => "Cancelar" %>
+    <% end %>
+
+<% end %>
+

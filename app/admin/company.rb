@@ -4,7 +4,7 @@ ActiveAdmin.register Company do
     f.inputs "Empresa" do
       f.input :name
       f.input :shopping_id, :as => :select, :collection => Shopping.all
-      f.input :user_id, :as => :select, :collection => User.where(:user_role_id => 1).all
+      f.input :user_id, :as => :select, :collection => User.where(:user_role_id => 2).all
       f.input :keywords, :as => :check_boxes
 
     end

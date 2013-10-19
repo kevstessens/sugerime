@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :keywords
   has_one :company
   belongs_to :user_role
   belongs_to :genre
@@ -11,8 +12,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar
-  attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role_id, :address, :address_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar, :keyword_ids
+  attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role_id, :address, :address_attributes, :need
 
   accepts_nested_attributes_for :address
 

@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :provider
       t.string :uid
       t.string :avatar
+      t.string :need
 
       t.timestamps
     end
