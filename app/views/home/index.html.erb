@@ -56,9 +56,12 @@
 
                         $("#shopping_link").click(function() {
                             window.location = "/shoppings/"+Gmaps.map.markers[shopping].shopping_id;
+
                         });
                         $("#shopping_link").val($("#shopping_link").val().replace('#NAME', Gmaps.map.markers[shopping].shopping_name));
                         $("#shopping_link").show();
+
+                        break;
                     }
 
                 }

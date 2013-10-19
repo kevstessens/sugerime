@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.where("user_role_id = ?", 1).all
-    @final = Array.new
+    @final = Set.new
 
     company =Company.find(current_user.company.id)
     shopping_address = company.shopping.address
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       user.keywords.each do |keyword|
         if company.keywords.include?(keyword)
           user.directed_offers = Offer.where("user_id = ?", user.id).all
-          @final.append(user)
+          @final.add(user)
         end
       end
     end

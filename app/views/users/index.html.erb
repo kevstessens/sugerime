@@ -36,7 +36,6 @@
 
         $.getJSON("http://localhost:3000/users.json", function(result) {
             $("#users_list").empty();
-            console.log(result);
 
             $.each(result, function(elem) {
 
