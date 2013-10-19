@@ -15,6 +15,10 @@ class ShoppingsController < ApplicationController
   def show
     @shopping = Shopping.find(params[:id])
 
+    @companies_count = @shopping.companies.all.count
+
+    @user = current_user
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @shopping }
@@ -79,5 +83,33 @@ class ShoppingsController < ApplicationController
       format.html { redirect_to shoppings_url }
       format.json { head :no_content }
     end
+  end
+
+  def show_offers
+
+    @shopping = Shopping.find(params[:id])
+
+    user = current_user
+
+    @companies = @shopping.companies.all
+
+    @companies_count = @companies.count
+
+    @offers = []
+
+    @companies.each do |c|
+      user.keywords.all.each do |k|
+        if c.keywords.include?(k)
+          @offers.concat(c.offers.where("user_id = ? OR user_id is ?", user.id, nil))
+          break
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @shopping }
+    end
+
   end
 end

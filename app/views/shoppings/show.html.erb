@@ -1,10 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<p class="text-left">
+ Bienvenido:
   <%= @shopping.name %>
 </p>
+<h1 class="text-center">¿Qué estás buscando?</h1>
+<h2 class="text-center">Hay <%=@companies_count%> locales esperandote</h2>
 
 
-<%= link_to 'Edit', edit_shopping_path(@shopping) %> |
-<%= link_to 'Back', shoppings_path %>
+<%= semantic_form_for @user do |f| %>
+
+    <%= f.input :need %>
+
+    <%= f.input :keywords, :as => :check_boxes %>
+
+    <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
+
+    <%= f.actions do %>
+        <%= f.action :submit, :as => :button, :label => "Ingresar" %>
+        <%= f.action :cancel, :as => :link, :label => "Cancelar" %>
+    <% end %>
+
+<% end %>
+

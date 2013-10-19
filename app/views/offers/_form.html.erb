@@ -18,6 +18,7 @@
   <div class="field">
     <br/>
     <%= f.hidden_field :company_id, :value => Company.where(:user_id => current_user.id).first.id %>
+    <%= f.hidden_field :user_id, :value => @user.id unless @user.nil? %>
   </div>
   <div class="field">
     <%= f.label :expiration %><br />

@@ -1,87 +1,68 @@
+<h1>Sugerime</h1>
+<p>Bienvenido a Sugerime</p>
 
-<div class="span12">
-  <div class="offset1 span8">
-    <!--<img class="row" src="/assets/lala.png"> </br>-->
 
-    <div class="hero-unit">
-      <h1 class="pagination-centered">Unicenter</h1>
+<%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
 
-      <p class="text-center">Shopping</p>
+<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
-      <!--<p> xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx-->
-        <!--xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx-->
-        <!--xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx xxxxx-->
+<% content_for :scripts do %>
+    <script type="text/javascript">
+        $().ready(function () {
 
-      </p>
-    </div>
+            function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+                var R = 6371000; // Radius of the earth in m
+                var dLat = deg2rad(lat2-lat1);  // deg2rad below
+                var dLon = deg2rad(lon2-lon1);
+                var a =
+                                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                                        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                                                Math.sin(dLon/2) * Math.sin(dLon/2)
+                        ;
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var d = R * c; // Distance in m
+                return d;
+            }
 
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">Horarios</a></li>
-        <li><a href="#tab2" data-toggle="tab">Contacto</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab1">
-          <p>Horarios de atención:</p>
-        </div>
-        <div class="tab-pane" id="tab2">
-          <p>Datos de contacto:</p>
-        </div>
-      </div>
-    </div>
+            function deg2rad(deg) {
+                return deg * (Math.PI/180)
+            }
 
-    <% if current_user.present? %>
+            Gmaps.map.geolocationSuccess = function() {
+                Gmaps.map.createMarker({Lat: Gmaps.map.userLocation.lat(),
+                    Lng: Gmaps.map.userLocation.lng(),
+                    rich_marker: null,
+                    marker_picture: ""
+                });
 
-        <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
+                var user_id = "<%= current_user.id %>";
 
-        <% content_for :scripts do %>
-            <script type="text/javascript">
-                $().ready(function () {
+                $.ajax({
+                    url: "http://localhost:3000/users/"+user_id+"/address",
+                    data: {
+                        lat : Gmaps.map.userLocation.lat(),
+                        lng : Gmaps.map.userLocation.lng()
+                    },
+                    type: "POST",
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+                });
 
-                    Gmaps.map.geolocationSuccess = function() {
-                        Gmaps.map.createMarker({Lat: Gmaps.map.userLocation.lat(),
-                            Lng: Gmaps.map.userLocation.lng(),
-                            rich_marker: null,
-                            marker_picture: ""
-                        });
+                var origin = new google.maps.LatLng(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng());
+                var distance;
 
-                        var user_id = "<%= current_user.id %>";
+                for (shopping in Gmaps.map.markers) {
+                    distance = getDistanceFromLatLonInKm(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng(), Gmaps.map.markers[shopping].lat, Gmaps.map.markers[shopping].lng);
+                    if (distance < 200) {
 
-                        $.post("http://localhost:3000/users/"+user_id+"/address", {
-                            lat : Gmaps.map.userLocation.lat(),
-                            lng : Gmaps.map.userLocation.lng()
-                        });
-
-                        var origin = new google.maps.LatLng(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng());
-                        var destination = new google.maps.LatLng(Gmaps.map.markers[0].lat, Gmaps.map.markers[0].lng);
-
-                        var service = new google.maps.DistanceMatrixService();
-                        service.getDistanceMatrix(
-                                {
-                                    origins: [origin],
-                                    destinations: [destination],
-                                    travelMode: google.maps.TravelMode.DRIVING,
-                                    unitSystem: google.maps.UnitSystem.METRIC,
-                                    avoidHighways: false,
-                                    avoidTolls: false
-                                }, callback);
-
-                        function callback(response, status) {
-                            console.log(response);
-                        }
+                        $("#shopping_link").attr("href", "/shoppings/"+Gmaps.map.markers[shopping].shopping_id);
+                        $("#shopping_link").show();
                     }
 
-                })
-            </script>
-        <% end %>
+                }
 
-    <% else %>
+            }
 
-        <b>Por favor ingrese</b>
+        })
+    </script>
+<% end %>
 
-    <% end %>
-
-    <a><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
-
-  </div>
-</div>

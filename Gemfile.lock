@@ -86,8 +86,12 @@ GEM
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+<<<<<<< HEAD
     jquery-ui-rails (4.0.4)
       jquery-rails
+=======
+    jquery-ui-rails (4.0.5)
+>>>>>>> db3d41191166000ad36e1cbfd83478ed7cc12c45
       railties (>= 3.1.0)
     json (1.8.1)
     jwt (0.1.8)
