@@ -2,11 +2,11 @@
 <p>Bienvenido a Sugerime</p>
 
 
-    <%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
+<%= link_to('Ir al shopping', 'javascript:;', :id => "shopping_link", :style => "display:none;") %>
 
-    <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
+<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
 
-    <% content_for :scripts do %>
+<% content_for :scripts do %>
     <script type="text/javascript">
         $().ready(function () {
 
@@ -38,13 +38,13 @@
                 var user_id = "<%= current_user.id %>";
 
                 $.ajax({
-                        url: "http://localhost:3000/users/"+user_id+"/address",
-                        data: {
-                            lat : Gmaps.map.userLocation.lat(),
-                            lng : Gmaps.map.userLocation.lng()
-                        },
-                        type: "POST",
-                        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+                    url: "http://localhost:3000/users/"+user_id+"/address",
+                    data: {
+                        lat : Gmaps.map.userLocation.lat(),
+                        lng : Gmaps.map.userLocation.lng()
+                    },
+                    type: "POST",
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
                 });
 
                 var origin = new google.maps.LatLng(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng());
@@ -64,5 +64,5 @@
 
         })
     </script>
-    <% end %>
+<% end %>
 
