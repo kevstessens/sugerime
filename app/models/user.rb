@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar, :keyword_ids
   attr_accessible :birthdate, :email, :last_name, :name, :password, :user_role_id, :address, :address_attributes, :need
 
+  attr_accessor :directed_offers
+
   accepts_nested_attributes_for :address
 
   # METHODS ---------------------------------------------

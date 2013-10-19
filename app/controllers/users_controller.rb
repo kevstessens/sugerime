@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @users.each do |user|
       user.keywords.each do |keyword|
         if company.keywords.include?(keyword)
+          user.directed_offers = Offer.where("user_id = ?", user.id).all
           @final.append(user)
         end
       end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: @users, :include => {:directed_offers => {:include => :company}} }
     end
   end
 
