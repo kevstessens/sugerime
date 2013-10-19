@@ -3,16 +3,27 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.where("user_role_id = ?", 1).all
+    @final = Array.new
 
-    shopping_address = Company.find(current_user.company.id).shopping.address
+    company =Company.find(current_user.company.id)
+    shopping_address = company.shopping.address
 
-    #@users.each do |user|
-    #  user_address = user.address
-    #  if user_address.distance_to([shopping_address.latitude,shopping_address.longitude]) > 200
-    #    @users.delete(user)
-    #  end
-    #end
+    @users.each do |user|
+      user_address = user.address
+      if user_address.distance_to([shopping_address.latitude,shopping_address.longitude]) > 200
+        @users.remove(user)
+      end
+    end
 
+    @users.each do |user|
+      user.keywords.each do |keyword|
+        if company.keywords.include?(keyword)
+          @final.append(user)
+        end
+      end
+    end
+
+    @users = @final
 
     respond_to do |format|
       format.html # index.html.erb
