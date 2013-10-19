@@ -3,5 +3,5 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   has_many :inscriptions
 
-  attr_accessible :company_id, :description, :expiration, :user
+  attr_accessible :company_id, :description, :expiration, :user, :user_id
 end

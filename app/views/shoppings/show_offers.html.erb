@@ -6,7 +6,27 @@
 </p>
 <h2>Hay <%=@companies_count%> locales esperandote</h2>
 
-<p>Ofertas</p>
+<div class="row">
+  <div class="span8">
+    <h2>Promociones</h2>
+
+    <table>
+      <tr>
+        <th>Local</th>
+        <th>Descripcion</th>
+      </tr>
+
+      <% @offers.each do |o| %>
+          <tr>
+            <td><%= o.company.name %></td>
+            <td><%= o.description %></td>
+          </tr>
+      <% end %>
+    </table>
+
+  </div>
+</div>
+
 
 <script type="text/javascript">
     $().ready(function() {
