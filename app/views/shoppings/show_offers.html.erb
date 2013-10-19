@@ -11,17 +11,20 @@
     <h2>Promociones</h2>
 
     <table>
-      <tr>
-        <th>Local</th>
-        <th>Descripcion</th>
-      </tr>
-
-      <% @offers.each do |o| %>
+      <thead>
           <tr>
-            <td><%= o.company.name %></td>
-            <td><%= o.description %></td>
+            <th>Local</th>
+            <th>Descripcion</th>
           </tr>
-      <% end %>
+      </thead>
+      <tbody id="offers_list">
+          <% @offers.each do |o| %>
+              <tr>
+                <td><%= o.company.name %></td>
+                <td><%= o.description %></td>
+              </tr>
+          <% end %>
+      </tbody>
     </table>
 
   </div>
@@ -29,8 +32,24 @@
 
 
 <script type="text/javascript">
+
+    update_offers = function() {
+
+        $.getJSON("http://localhost:3000/shoppings/<%= @shopping.id %>+/offers.json", function(result) {
+            $("#offers_list").empty();
+
+            $.each(result, function(elem) {
+                $("#offers_list").append("<tr><td>"+result[elem].company.name+"</td><td>"+result[elem].description+"</td></tr>");
+            })
+
+            setTimeout(function() {update_offers()}, 5000);
+        });
+
+    }
+
     $().ready(function() {
-        //setTimeout(function() {window.location.reload()}, 5000);
+
+        setTimeout(function() {update_offers()}, 5000);
     });
 </script>
 

@@ -108,7 +108,7 @@ class ShoppingsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @shopping }
+      format.json { render :json => @offers, :include => :company }
     end
 
   end
