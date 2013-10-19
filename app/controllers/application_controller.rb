@@ -17,11 +17,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_up_path_for(resource)
 
-
     if current_user.user_role_id == 1 or current_user.user_role_id == nil
       root_path
     else
       users_path
     end
+
   end
+
 end

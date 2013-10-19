@@ -124,7 +124,11 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state line="15" column="20" selection-start="306" selection-end="306" vertical-scroll-proportion="-9.375">
+=======
+            <state line="14" column="4" selection-start="282" selection-end="282" vertical-scroll-proportion="0.49519232">
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -1162,7 +1166,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile.lock">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-7.131579">
+=======
+        <state line="14" column="4" selection-start="282" selection-end="282" vertical-scroll-proportion="0.49519232">
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
