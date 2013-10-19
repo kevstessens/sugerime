@@ -1,28 +1,26 @@
 <div class="row">
   <div class="span8">
-<h1>Listing users</h1>
+<h1>Usuarios en el shopping</h1>
 
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Last name</th>
-    <th>Birthdate</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<ul>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= user.name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.birthdate %></td>
-    <td><%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => user.id) %></td>
-  </tr>
+  <li>
+    <ul>
+    <li>Nombre: <%= user.email %></li>
+    <li>¿Qué busca?: <%= user.need %></li>
+    <li>
+      Ofertas de otros locales
+      <ul>
+        <li>Local: test</li>
+        <li>Oferta: test</li>
+      </ul>
+    </li>
+    <li><%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => user.id) %></li>
+    </ul>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 
