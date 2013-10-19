@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<p class="text-left">
+ Bienvenido:
   <%= @shopping.name %>
 </p>
-<h2>Hay <%=@companies_count%> locales esperandote</h2>
+<h1 class="text-center">¿Qué estás buscando?</h1>
+<h2 class="text-center">Hay <%=@companies_count%> locales esperandote</h2>
 
-<p>¿Qué estás buscando?</p>
 
 <%= semantic_form_for @user do |f| %>
 
