@@ -92,12 +92,15 @@ class ShoppingsController < ApplicationController
     user = current_user
 
     @companies = @shopping.companies.all
+
+    @companies_count = @companies.count
+
     @offers = []
 
     @companies.each do |c|
       user.keywords.all.each do |k|
         if c.keywords.include?(k)
-          @offers.push(c.offers)
+          @offers.concat(c.offers.where("user_id = ? OR user_id is ?", user.id, nil))
           break
         end
       end
