@@ -1,6 +1,6 @@
 Sugerime::Application.routes.draw do
 
-  root :to  =>"home#index"
+  root :to  =>"pages#principal"
 
   match 'offers/directed_offer' => 'offers#new_directed_offer'
 
