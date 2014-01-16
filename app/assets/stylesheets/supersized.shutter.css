@@ -20,7 +20,7 @@ License : MIT License / GPL License
     bottom: 0px;
     left: 0;
     z-index: 4;
-    background: url(/assets//nav-bg.png) repeat-x;
+    /*background: url(/assets//nav-bg.png) repeat-x;*/
     position: fixed;
 }
 

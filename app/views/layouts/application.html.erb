@@ -6,6 +6,7 @@
 <!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
 <head>
 
+  <title>Sugeri.me</title>
 
 
   <!-- Meta Tags -->
@@ -112,21 +113,52 @@
 </div>
 <!-- End of Splash Screen -->
 
-<div class="bs-docs-example">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <img class="brand" src="/assets/logo_mini.png">
+<!--<div class="bs-docs-example">-->
+  <!--<div class="navbar">-->
+    <!--<div class="navbar-inner">-->
+      <!--<div class="container">-->
+        <!--<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+        <!--</a>-->
+        <!--<img class="brand" src="/assets/logo_mini.png">-->
 
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
-</div>
+      <!--</div>-->
+    <!--</div>&lt;!&ndash; /navbar-inner &ndash;&gt;-->
+  <!--</div>&lt;!&ndash; /navbar &ndash;&gt;-->
+<!--</div>-->
+
+<!-- NAVBAR
+   ================================================== -->
+<div class="navbar-wrapper">
+  <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+  <div class="container">
+
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img class="brand" src="/assets/logo_mini.png">
+        <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Principal</a></li>
+            <li><a href="#about">Ofertas</a></li>
+            <li><a href="#contact">Contacto</a></li>
+            <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+
+  </div> <!-- /.container -->
+</div><!-- /.navbar-wrapper -->
 
 
 
@@ -150,23 +182,23 @@
 
 
 
-<!-- Socialize -->
-<div id="social-area" class="page">
-  <div class="container">
-    <div class="row">
-      <div class="span11">
-        <nav id="social">
-          <ul>
-            <li><a href="https://plus.google.com/105500420878314068694" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>
-            <li><a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>
-            <li><a href="https://www.facebook.com/Bluxart" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Socialize -->
+<!--&lt;!&ndash; Socialize &ndash;&gt;-->
+<!--<div id="social-area" class="page">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="offset3 span3">-->
+        <!--<nav id="social">-->
+          <!--<ul>-->
+            <!--<li><a href="https://plus.google.com/105500420878314068694" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>-->
+            <!--<li><a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>-->
+            <!--<li><a href="https://www.facebook.com/Bluxart" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>-->
+          <!--</ul>-->
+        <!--</nav>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End Socialize &ndash;&gt;-->
 
 <!-- Footer -->
 <footer>

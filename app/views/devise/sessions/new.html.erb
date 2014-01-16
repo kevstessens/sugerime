@@ -1,5 +1,7 @@
       <div class="row text-center " >
-     <div class="offset4 span4 border"> </br>
+        <div class="span12">
+
+     <div class="offset4 span4 offset4 border"> </br>
       <img class="image-wrap" src="/assets/logo_mini.png">
       <h3>Ingresa:</h3>
       <%= form_for(resource,:class => "form-horizontal" ,:as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -27,4 +29,5 @@
           <button type="submit" class="btn btn-danger">Entrar</button>
       <% end %>
         </div>
-    </div>
+        </div>
+    </div>  </br>
