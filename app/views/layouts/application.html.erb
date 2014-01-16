@@ -150,6 +150,12 @@
             <li class="active"><a href="#">Principal</a></li>
             <li><a href="#about">Ofertas</a></li>
             <li><a href="#contact">Contacto</a></li>
+            <%if user_signed_in?%>
+            <li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+                <%else%>
+                <li></li>
+                <%end%>
+
             <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
 
           </ul>
