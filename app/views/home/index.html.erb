@@ -1,11 +1,21 @@
-<h1>Sugerime</h1>
-<p>Bienvenido a Sugerime</p>
+<div class="row text-center " >
+  <div class="span12">
+
+    <div class="offset4 span4 offset4"> </br>
+
+<h1>Bienvenido a Sugerime</h1>
 
 
-<%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
+<%#= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
 
+      <%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :class => "btn btn-primary btn-large") %>
+
+    </div>
+  </div>
+</div>
+      <div class="span12">
 <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
-
+      </div>
 <% content_for :scripts do %>
     <script type="text/javascript">
         $().ready(function () {
