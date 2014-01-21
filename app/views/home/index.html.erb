@@ -1,19 +1,22 @@
+<div align="center">
 <div class="row text-center " >
   <div class="span12">
 
     <div class="offset4 span4 offset4"> </br>
 
-<h1>Bienvenido a Sugerime</h1>
+      <h1>Bienvenido!</h1>
+      <div><p>En el mapa podrás encontrar los shoppings mas cercanos, cuando te encuentres <b>cerca</b> de uno de ellos, podrás acceder a sus
+      descuentos presionando el botón que aparecerá debajo de este texto</p></div>
 
 
-<%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
+<%= button_to('Entrar a #NAME', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-danger btn-large") %>
 
       <%#= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :class => "btn btn-primary btn-large") %>
 
     </div>
   </div>
 </div>
-      <div class="span12">
+      <div class="span12" align="center">
 <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false},"markers" => { "data" => @json }) %>
       </div>
 <% content_for :scripts do %>
@@ -81,3 +84,4 @@
         })
     </script>
 <% end %>
+</div>

@@ -1164,6 +1164,8 @@ footer .credits {
     margin-left: -160px;
 	padding: 20px 0;
 	text-transform: uppercase;
+    align-content: center;
+    text-align: center;
 }
 
 /* ==================================================
