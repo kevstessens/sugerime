@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20131018231600) do
   create_table "companies_keywords", :force => true do |t|
     t.integer  "keyword_id"
     t.integer  "company_id"
-    t.datetime "created_at", :default => '2013-10-19 17:04:45'
-    t.datetime "updated_at", :default => '2013-10-19 17:04:45'
+    t.datetime "created_at", :default => '2014-01-21 18:44:11'
+    t.datetime "updated_at", :default => '2014-01-21 18:44:11'
   end
 
   create_table "countries", :force => true do |t|
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(:version => 20131018231600) do
   create_table "keywords_users", :force => true do |t|
     t.integer  "keyword_id"
     t.integer  "user_id"
-    t.datetime "created_at", :default => '2013-10-19 17:04:45'
-    t.datetime "updated_at", :default => '2013-10-19 17:04:45'
+    t.datetime "created_at", :default => '2014-01-21 18:44:11'
+    t.datetime "updated_at", :default => '2014-01-21 18:44:11'
   end
 
   create_table "offers", :force => true do |t|

@@ -6,9 +6,9 @@
 <h1>Bienvenido a Sugerime</h1>
 
 
-<%#= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
+<%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :style => "display:none;", :class => "btn btn-primary btn-large") %>
 
-      <%= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :class => "btn btn-primary btn-large") %>
+      <%#= button_to('Estás en el shopping: #NAME, ENTRAR', 'javascript:;', :id => "shopping_link", :class => "btn btn-primary btn-large") %>
 
     </div>
   </div>
@@ -62,7 +62,7 @@
 
                 for (shopping in Gmaps.map.markers) {
                     distance = getDistanceFromLatLonInKm(Gmaps.map.userLocation.lat(), Gmaps.map.userLocation.lng(), Gmaps.map.markers[shopping].lat, Gmaps.map.markers[shopping].lng);
-                    if (distance < 200) {
+                    if (distance < 1000) {
 
                         $("#shopping_link").click(function() {
                             window.location = "/shoppings/"+Gmaps.map.markers[shopping].shopping_id;

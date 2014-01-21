@@ -2,7 +2,7 @@
   <div class="offset4 span4 border"> </br>
     <img class="image-wrap" src="/assets/logo_mini.png">
 
-    <h3>Ingresa:</h3>
+    <h3>Ingresa tus datos:</h3>
 <%= form_for(resource, :as => resource_name,:class => "form-horizontal" , :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -14,14 +14,14 @@
         </div>
 
         <div class="control-group">
-          <label class="control-label" for="inputPassword">Password</label>
+          <label class="control-label" for="inputPassword">Contraseña</label>
           <div class="controls">
   <%= f.password_field :password %>
           </div>
         </div>
 
         <div class="control-group">
-          <label class="control-label" for="inputPassword">Re Password</label>
+          <label class="control-label" for="inputPassword">Confirmar contraseña</label>
           <div class="controls">
   <%= f.password_field :password_confirmation %>
           </div>
