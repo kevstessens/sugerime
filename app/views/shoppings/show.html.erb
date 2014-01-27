@@ -1,25 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p class="text-left">
- Bienvenido:
+<p class="text-center text-error">
+  Bienvenido:
   <%= @shopping.name %>
 </p>
 <h1 class="text-center">¿Qué estás buscando?</h1>
-<h2 class="text-center">Hay <%=@companies_count%> locales esperandote</h2>
+<h2 class="text-center">Hay <%= @companies_count %> locales esperandote</h2>
 
 
-<%= semantic_form_for @user do |f| %>
+<div class="row-fluid"></br>
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="offset4 span4 offset4">
 
-    <%= f.input :need %>
+        <%= semantic_form_for @user do |f| %>
 
-    <%= f.input :keywords, :as => :check_boxes %>
 
-    <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
+            <%#= f.input :need, :label =>"Buscar: " %>
 
-    <%= f.actions do %>
-        <%= f.action :submit, :as => :button, :label => "Ingresar", :html => {:class => "btn btn-primary btn-large"} %>
-        <%= f.action :cancel, :as => :link, :label => "Cancelar" %>
-    <% end %>
+            <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
+            <%= f.input :keywords, :label => "Filtrar por: ", :as => :check_boxes %>
 
-<% end %>
+            </br>
+
+            <%= f.actions do %>
+                <%= f.action :submit,  :label => "Ingresar", :html => {:class => "btn btn-danger"} %>
+                  </br>
+                <%= f.action :cancel, :label => "Cancelar" , :html => {:class => "btn btn-danger"} %>
+            <% end %>
+
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
 
