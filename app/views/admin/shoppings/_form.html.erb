@@ -20,6 +20,13 @@
    <%end%>
    </div>
 
+    <div>
+      <%=f.inputs "Descripcion" do%>
+          <%= f.input :description %>
+          <%= f.input :picture %>
+      <%end%>
+    </div>
+
    <%= f.actions do %>
        <%= f.action :submit %>
        <li class="cancel">

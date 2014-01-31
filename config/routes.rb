@@ -4,6 +4,8 @@ Sugerime::Application.routes.draw do
 
   match 'offers/directed_offer' => 'offers#new_directed_offer'
 
+
+
   resources :addresses
 
 
@@ -47,6 +49,9 @@ Sugerime::Application.routes.draw do
   post '/users/:id/address', to: 'users#update_address'
 
   get '/shoppings/:id/offers', to: 'shoppings#show_offers', as: :show_offers
+
+  get '/shoppings/:id/details' , to:'shoppings#details' , as: :details
+
   #match 'index' => 'users#index'
 
 

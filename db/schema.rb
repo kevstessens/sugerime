@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018231600) do
+ActiveRecord::Schema.define(:version => 20140131155933) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20131018231600) do
   create_table "companies_keywords", :force => true do |t|
     t.integer  "keyword_id"
     t.integer  "company_id"
-    t.datetime "created_at", :default => '2014-01-21 21:41:10'
-    t.datetime "updated_at", :default => '2014-01-21 21:41:10'
+    t.datetime "created_at", :default => '2014-01-31 13:25:07'
+    t.datetime "updated_at", :default => '2014-01-31 13:25:07'
   end
 
   create_table "countries", :force => true do |t|
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(:version => 20131018231600) do
   create_table "keywords_users", :force => true do |t|
     t.integer  "keyword_id"
     t.integer  "user_id"
-    t.datetime "created_at", :default => '2014-01-21 21:41:10'
-    t.datetime "updated_at", :default => '2014-01-21 21:41:10'
+    t.datetime "created_at", :default => '2014-01-31 13:25:07'
+    t.datetime "updated_at", :default => '2014-01-31 13:25:07'
   end
 
   create_table "offers", :force => true do |t|
@@ -121,8 +121,10 @@ ActiveRecord::Schema.define(:version => 20131018231600) do
 
   create_table "shoppings", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+    t.text     "picture"
   end
 
   create_table "states", :force => true do |t|

@@ -112,4 +112,15 @@ class ShoppingsController < ApplicationController
     end
 
   end
+
+  def details
+
+    @shopping = Shopping.find(params[:id])
+
+    user = current_user
+
+    @companies = @shopping.companies.all
+
+  end
+
 end

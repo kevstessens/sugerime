@@ -1,2 +1,2 @@
-<h4 style="color: #000;"><%= address.shopping.name %> (<%= company_count %> locales ofertando)</h4>
+<h4 style="color: #000;"><%= link_to address.shopping.name, details_path(:id => address.shopping.id) %> (<%= company_count %> locales ofertando)</h4>
 <p><%= address.street %> <%=address.number%></p>
