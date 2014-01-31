@@ -47,7 +47,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to offers_path, notice: 'La oferta se ha creado satisfactoriamente' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }

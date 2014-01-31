@@ -1,20 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Description:</b>
-  <%= @offer.description %>
-</p>
+<div class="row-fluid"></br>
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="offset4 span4 offset4">
 
-<p>
-  <b>Company:</b>
-  <%= @offer.company_id %>
-</p>
+        <div class="span12 info-block">
+          <h3><span class="color-text">  <%= @offer.description %> </span></h3>
+          <div class="info-text">Expiración : <%= @offer.expiration.strftime("%e/%m/%Y %y:%M")%></div>
+          <div class="info-text">Local : <%= @offer.company.name%></div>
+          <% unless @offer.user.nil?%>
+          <div class="info-text">Usuario : <%= @offer.user.email%></div>
+          <% end %>
+          <%= link_to 'Volver', offers_path %>
 
-<p>
-  <b>Expiration:</b>
-  <%= @offer.expiration %>
-</p>
+        </div>
 
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+</br>
 
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
-<%= link_to 'Back', offers_path %>

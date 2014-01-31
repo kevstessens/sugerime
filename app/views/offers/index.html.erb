@@ -1,4 +1,10 @@
 
+<% unless flash[:notice].nil?%>
+<div class="alert alert-success fade in">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+  <strong>Genial, </strong> <%= flash[:notice]%>
+</div>
+<% end%>
 
 <% if @offers.blank?%>
     <% if current_user.user_role == 1%>
