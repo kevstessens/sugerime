@@ -48,13 +48,13 @@
 <table class="table table-bordered text-center" >
   <tr class="text-center" >
     <th class="text-center">Descripcion</th>
-    <%unless current_user.user_role_id=2%>
+    <%unless current_user.user_role_id==2%>
     <th class="text-center">Compania</th>
         <% end%>
 
     <th class="text-center">Usuario</th>
     <th class="text-center">Expiracion</th>
-    <%if current_user.user_role_id=2%>
+    <%if current_user.user_role_id==2%>
 
   <th class="text-center">Acciones</th>
         <%end%>
@@ -64,7 +64,7 @@
 <% @offers.each do |offer| %>
   <tr >
     <td class="text-center"><%= link_to offer.description, offer %></td>
-    <%unless current_user.user_role_id=2%>
+    <%unless current_user.user_role_id==2%>
 
   <td class="text-center"><%= Company.find(offer.company_id).name %></td>
     <% end%>
@@ -75,7 +75,7 @@
         <td class="text-center"><%= User.find(offer.user_id).email %></td>
     <% end%>
     <td class="text-center"><%= offer.expiration.strftime("%e/%m/%Y %y:%M") %></td>
-    <%if current_user.user_role_id=2%>
+    <%if current_user.user_role_id==2%>
 
   <td class="text-center"><%= link_to 'Editar', edit_offer_path(offer) %> -
     <%= link_to 'Eliminar', offer, method: :delete, data: { confirm: 'Seguro?' } %></td>
