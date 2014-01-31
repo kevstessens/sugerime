@@ -4,26 +4,23 @@
   Shopping
   <%= @shopping.name %>
 </h1>
-<h1 class="text-center">Detalles</h1>
+<!--<h1 class="text-center">Detalles</h1>-->
 
 
 
 <div class="row-fluid"></br>
   <div class="span12">
     <div class="row-fluid">
-      <div class="offset4 span4 offset4">
+      <div class="offset1 span10 offset1">
 
-        <p>Aca van los detalles : <%= @shopping.description%></p>
+       <div class="span7 info-block">
+         <h3><span class="color-text">DETALLES:</span></h3>
+        <div class="info-text">Aca van los detalles : <%= @shopping.description%></div>
+       </div>
 
-        <%= form_for @shopping, :html => {:multipart => true} do |f| %>
-        <div class="field">
-          <%= f.label :Foto %><br />
-          <%= f.file_field :picture %>
-        </div>
+        <div class="span2"> <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %></div>
 
-            <%= image_tag(@shopping.picture_url, :width => 600) if @shopping.picture.present? %>
 
-            <%end%>
 
 
 
@@ -31,4 +28,6 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 
