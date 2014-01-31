@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'El usuario ha sido creado.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
           if params[:user][:redirect]
             redirect_to params[:user][:redirect]
           else
-            redirect_to @user, notice: 'User was successfully updated.'
+            redirect_to @user, notice: 'Sus Datos han sido actualizados.'
           end
         }
         format.json { head :no_content }

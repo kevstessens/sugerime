@@ -164,6 +164,7 @@
                     <li><a href="<%=root_path%>">Principal</a></li>
                     <li><a href="<%= offers_path%>">Ofertas</a></li>
                     <li><a href="<%= offers_path%>">Buscar</a></li>
+                    <li><a href="<%= edit_user_path(current_user)%>">Mis Datos</a></li>
                     <%if user_signed_in?%>
                         <li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
                     <%else%>
