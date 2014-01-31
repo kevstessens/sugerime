@@ -20,12 +20,11 @@
 
         <div class="span2"> <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %></div>
 
-
-
-
-
       </div>
     </div>
+     <div class="text-center">
+    <%= link_to 'Volver', root_path, :class => "btn btn-danger btn-large"%>
+     </div>
   </div>
 </div>
 </br>
