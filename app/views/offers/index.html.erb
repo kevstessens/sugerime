@@ -1,27 +1,42 @@
-<h1>Ofertas</h1>
 
-<table class="table table-condensed">
-  <tr>
-    <th>Descripcion</th>
-    <th>Compania</th>
-    <th>Expiracion</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<div align="center">
+  <h1>Mis Ofertas <%= link_to '+', new_offer_path, :class => "btn btn-danger btn-large" %>
+  </h1>
+</div>
+
+
+<table class="table table-bordered text-center" >
+  <tr class="text-center" >
+    <th class="text-center">Descripcion</th>
+    <%unless current_user.user_role_id=2%>
+    <th class="text-center">Compania</th>
+        <% end%>
+
+    <th class="text-center">Usuario</th>
+    <th class="text-center">Expiracion</th>
+    <th class="text-center">Acciones</th>
   </tr>
 
 <% @offers.each do |offer| %>
-  <tr class="success">
-    <td><%= offer.description %></td>
-    <td><%= offer.company_id %></td>
-    <td><%= offer.expiration %></td>
-    <td><%= link_to 'Show', offer %></td>
-    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-    <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <tr >
+    <td class="text-center"><%= link_to offer.description, offer %></td>
+    <%unless current_user.user_role_id=2%>
+
+  <td class="text-center"><%= Company.find(offer.company_id).name %></td>
+    <% end%>
+
+    <% if offer.user_id.nil?%>
+        <td class="text-center">Oferta genérica</td>
+    <% else%>
+        <td class="text-center"><%= User.find(offer.user_id).email %></td>
+    <% end%>
+    <td class="text-center"><%= offer.expiration.strftime("%e/%m/%Y %y:%M") %></td>
+    <td class="text-center"><%= link_to 'Editar', edit_offer_path(offer) %> -
+    <%= link_to 'Eliminar', offer, method: :delete, data: { confirm: 'Seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Offer', new_offer_path, :class => "btn button-primary" %>
+

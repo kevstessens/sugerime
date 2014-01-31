@@ -147,14 +147,31 @@
         <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a href="#">Principal</a></li>
-            <li><a href="#about">Ofertas</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <% unless current_user.nil?%>
+                <!-- Esto es para cliente de tipo empresa TODO CLIENTE EMPRESA -->
+
+                <% if current_user.user_role_id == 2%>
+            <li><a href="<%= users_path%>">Usuarios</a></li>
+            <li><a href="<%= offers_path%>">Ofertas</a></li>
             <%if user_signed_in?%>
             <li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
                 <%else%>
                 <li></li>
-                <%end%>
+                    <%end%>
+                <%else%>
+                    <!-- Desde aca para cliente tipo CLIENTE TODO TIPO CLIENTE -->
+
+                    <li><a href="#">Principal</a></li>
+                    <li><a href="<%= offers_path%>">Ofertas</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <%if user_signed_in?%>
+                        <li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+                    <%else%>
+                        <li></li>
+                    <%end%>
+          <%end%>
+            <%end%>
+
 
             <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
 
