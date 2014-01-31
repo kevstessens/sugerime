@@ -16,7 +16,7 @@
         <%= semantic_form_for @user do |f| %>
 
 
-            <%#= f.input :need, :label =>"Buscar: " %>
+            <%= f.input :need, :label =>"Buscar: " %>
 
             <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
             <%= f.input :keywords, :label => "Filtrar por: ", :as => :check_boxes %>

@@ -63,6 +63,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.need = "Nada en particular"
 
     respond_to do |format|
       if @user.save
