@@ -15,22 +15,20 @@
 
     <h2>Promociones</h2>
 
-    <table>
-      <thead>
-          <!--<tr>-->
-            <!--<th>Local</th>-->
-            <!--<th>Descripcion</th>-->
-          <!--</tr>-->
-      </thead>
-      <tbody id="offers_list">
+        <table class="table table-bordered text-center" >
+          <tr class="text-center" >
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Descripcion</th>
+          </tr>
+
           <% @offers.each do |o| %>
               <tr>
-                <td><%= o.company.name %></td>
-                <td><%= o.description %></td>
+                <td class="text-center"><%= o.company.name %></td>
+                <td class="text-center"><%= o.description %></td>
               </tr>
+
           <% end %>
-      </tbody>
-    </table>
+        </table>
 
 
 <script type="text/javascript">

@@ -15,7 +15,7 @@
 
        <div class="span7 info-block">
          <h3><span class="color-text">DETALLES:</span></h3>
-        <div class="info-text">Aca van los detalles : <%= @shopping.description%></div>
+        <div class="info-text"><%= @shopping.description%></div>
        </div>
 
         <div class="span2"> <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %></div>
