@@ -3,6 +3,8 @@
 <h1 class="text-center text-error">
   Shopping
   <%= @shopping.name %>
+
+
 </h1>
 <!--<h1 class="text-center">Detalles</h1>-->
 
@@ -16,6 +18,9 @@
        <div class="span7 info-block">
          <h3><span class="color-text">DETALLES:</span></h3>
         <div class="info-text"><%= @shopping.description%></div>
+         <% if current_user.address.distance_to([@shopping.address.latitude,@shopping.address.longitude])*1000 < 1000%>
+             <div class="info-text"><%= link_to 'Entrar!' , shopping_path(@shopping), :class => "btn btn-danger btn-large"%></div>
+         <% end %>
        </div>
 
         <div class="span2"> <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %></div>
@@ -23,7 +28,7 @@
       </div>
     </div>
      <div class="text-center">
-    <%= link_to 'Volver', root_path, :class => "btn btn-danger btn-large"%>
+       <%= link_to 'Volver al mapa', root_path, :class => "btn btn-danger btn-large"%>
      </div>
   </div>
 </div>

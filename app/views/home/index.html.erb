@@ -20,7 +20,7 @@
   <div class="span7">
     <div class="row-fluid">
       <div class="offset2 span3 offset2">
-<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false, "frameborder"=> false},"markers" => { "data" => @json }) %>
+<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true, "auto_zoom" => false, "frameborder"=> true},"markers" => { "data" => @json }) %>
 
 <% content_for :scripts do %>
     <script type="text/javascript">
