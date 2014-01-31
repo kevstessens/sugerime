@@ -3,6 +3,9 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     @offers = Offer.all
+    if current_user.user_role_id == 2
+      @offers = Offer.find_all_by_company_id(Company.find_all_by_user_id(current_user.id).first.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
