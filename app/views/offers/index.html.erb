@@ -1,8 +1,48 @@
 
-<div align="center">
-  <h1>Mis Ofertas <%= link_to '+', new_offer_path, :class => "btn btn-danger btn-large" %>
-  </h1>
-</div>
+
+<% if @offers.blank?%>
+    <% if current_user.user_role == 1%>
+
+
+        <div class="row text-center " >
+          <div class="span12">
+
+            <div class="offset4 span4 offset4"> </br>
+
+              <h1>No hay ofertas</h1>
+              <div><p>En este momento no existen ofertas activas para vos, volvé pronto!</p></div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+    <% else%>
+
+
+        <div class="row text-center " >
+          <div class="span12">
+
+            <div class="offset4 span4 offset4"> </br>
+
+              <h1>No hay ofertas <%= link_to '+', new_offer_path, :class => "btn btn-danger btn-large" if current_user.user_role_id == 2%></h1>
+              <div><p>En este momento no existen ofertas activas, podés crear una usando el botón "+"</p></div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+    <% end%>
+        <% else%>
+
+
+    <div align="center">
+      <h1>Mis Ofertas <%= link_to '+', new_offer_path, :class => "btn btn-danger btn-large" if current_user.user_role_id == 2%>
+      </h1>
+    </div>
 
 
 <table class="table table-bordered text-center" >
@@ -14,8 +54,12 @@
 
     <th class="text-center">Usuario</th>
     <th class="text-center">Expiracion</th>
-    <th class="text-center">Acciones</th>
-  </tr>
+    <%if current_user.user_role_id=2%>
+
+  <th class="text-center">Acciones</th>
+        <%end%>
+
+            </tr>
 
 <% @offers.each do |offer| %>
   <tr >
@@ -31,12 +75,17 @@
         <td class="text-center"><%= User.find(offer.user_id).email %></td>
     <% end%>
     <td class="text-center"><%= offer.expiration.strftime("%e/%m/%Y %y:%M") %></td>
-    <td class="text-center"><%= link_to 'Editar', edit_offer_path(offer) %> -
+    <%if current_user.user_role_id=2%>
+
+  <td class="text-center"><%= link_to 'Editar', edit_offer_path(offer) %> -
     <%= link_to 'Eliminar', offer, method: :delete, data: { confirm: 'Seguro?' } %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>
 
+<% end %>
 <br />
 
 
