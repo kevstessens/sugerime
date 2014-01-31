@@ -1,13 +1,13 @@
 <div class="row">
   <div class="span8">
-<h1>Usuarios en el shopping</h1>
+<h1 class="text-center">Usuarios en el shopping</h1>
 
 <ul id="users_list">
 
 <% @users.each do |user| %>
   <li>
     <ul>
-    <li>Nombre: <%= user.email %></li>
+    <li>Cliente: <%= user.email %></li>
     <li>¿Qué busca?: <%= user.need %></li>
     <li>
       Ofertas de otros locales
@@ -26,7 +26,6 @@
 
 <br />
 
-<%= link_to "Salir", destroy_user_session_path, :method => :delete %>
   </div>
 </div>
 
@@ -47,7 +46,7 @@
                            console.log("<li><a href='/offers/directed_offer?user_id='"+result[elem].id+">Nueva oferta</a></li>")
                 $("#users_list").append("<li>"+
                         "<ul>"+
-                        "<li>Nombre: "+result[elem].email+"</li>"+
+                        "<li>Cliente: "+result[elem].email+"</li>"+
                         "<li>¿Qué busca?: "+result[elem].need+"</li>"+
                         "<li>"+
                         "Ofertas de otros locales"+
