@@ -2,27 +2,40 @@
   <div class="span8">
 <h1 class="text-center">Usuarios en el shopping</h1>
 
-<ul id="users_list">
 
-<% @users.each do |user| %>
-  <li>
-    <ul>
-    <li>Cliente: <%= user.email %></li>
-    <li>¿Qué busca?: <%= user.need %></li>
-    <li>
-      Ofertas de otros locales
-      <ul>
-        <% user.directed_offers.each do |offer| %>
-        <li>Local: <%=offer.company.name%></li>
-        <li>Oferta: <%=offer.description%></li>
-        <% end %>
-      </ul>
-    </li>
-    <li><%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => user.id) %></li>
-    </ul>
-  </li>
+
+  <div class="row-fluid"></br>
+    <div class="span12">
+      <div class="row-fluid">
+        <div class="offset0 span12 offset0">
+
+          <div id="users_list">
+
+          <% @users.each do |user| %>
+
+
+
+
+              <div class="span6 info-block">
+                <h4><span class="color-text"><%= user.email %></span></h4>
+                <div class="info-text"><b>¿Qué busca?:</b> <%= user.need%></div>
+                <div class="info-text"><b>Ofertas Activas:</b> <%= user.directed_offers.count%></div>
+                <div class="info-text"><%= link_to 'Ver detalles', user_path(user), :class => "btn btn-danger" %></div>
+
+              </div>
+
+
+
 <% end %>
-</ul>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </br>
+  </br>
+</div>
 
 <br />
 
@@ -40,25 +53,22 @@
 
                 var other_offers = "";
 
+                var offers =0;
                 $.each(result[elem].directed_offers, function(o) {
+                    offers = offers +1;
+
+
                    other_offers += "<li>Local: "+result[elem].directed_offers[o].company.name+"</li><li>Oferta: "+result[elem].directed_offers[o].description+"</li>";
                 });
                            console.log("<li><a href='/offers/directed_offer?user_id='"+result[elem].id+">Nueva oferta</a></li>")
-                $("#users_list").append("<li>"+
-                        "<ul>"+
-                        "<li>Cliente: "+result[elem].email+"</li>"+
-                        "<li>¿Qué busca?: "+result[elem].need+"</li>"+
-                        "<li>"+
-                        "Ofertas de otros locales"+
-                        "<ul>"+
-                        other_offers+
-                        "</ul>"+
-                        "</li>"+
-                        "<li><a href='/offers/directed_offer?user_id="+result[elem].id+"'>Nueva oferta</a></li>"+
-                        "</ul>"+
-                "</li>");
-            })
+                $("#users_list").append("<div class='span6 info-block'>"+
+                        "<h4><span class='color-text'>"+result[elem].email+"</span></h4>"+
+                        "<div class='info-text'><b>¿Qué busca?:</b> "+result[elem].need+"</div>"+
+                        "<div class='info-text'><b>Ofertas Activas:</b> "+offers+"</div>"+
 
+                        "<div class='info-text'><a href='/users/"+result[elem].id+"' class='btn btn-danger'>Ver detalles</a></div>"+
+                        "</div>");
+            })
 
             setTimeout(function() {update_users()}, 5000);
         });

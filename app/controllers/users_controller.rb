@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where("user_role_id = ?", 1).all
+    @users = User.where("user_role_id = ? or user_role_id = ?", 1, nil).all
     @final = Set.new
 
     company =Company.find(current_user.company.id)
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @users.each do |user|
       user.keywords.each do |keyword|
         if company.keywords.include?(keyword)
-          user.directed_offers = Offer.where("user_id = ?", user.id).all
+          user.directed_offers = Offer.where("user_id = ? and expiration > ?", user.id, DateTime.now()).all
           @final.add(user)
         end
       end
@@ -37,7 +37,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    respond_to do |format|
+    company =Company.find(current_user.company.id)
+
+
+    @user.keywords.each do |keyword|
+      if company.keywords.include?(keyword)
+        @user.directed_offers = Offer.where("user_id = ? and expiration > ?", @user.id, DateTime.now()).all
+      end
+    end
+
+
+  respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
     end

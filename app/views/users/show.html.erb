@@ -1,39 +1,67 @@
-<div class="row text-center " >
-  <div class="span12">
-
-    <div class="offset4 span4 offset4"> </br>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Email:</b>
+<h2 class="text-center">
   <%= @user.email %>
-</p>
 
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+</h2>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
+<% if @user.directed_offers.blank?%>
 
-<p>
-  <b>Birthdate:</b>
-  <%= @user.birthdate %>
-</p>
 
-      <%= link_to 'Editar',edit_user_path(@user) , :class =>"btn btn-danger text-center" %> |
-      <%= link_to 'Volver',root_path, :class =>"btn btn-danger text-center" %> <br/><br/>
+    <div class="row text-center" >
+      <div class="span12">
 
+        <div class="offset1 span10 offset1"> </br>
+
+          <h3>No hay ofertas</h3>
+          <div><p>En este momento no existen ofertas activas para este cliente, <b>sé el primero!</b></p></div>
+
+
+          <div class="text-center">
+            </br></br>
+
+            <%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => @user.id) , :class => "btn btn-danger btn-large"%>
+          </div>
+
+
+        </div>
+      </div>
     </div>
+<% else %>
+
+
+<div class="row-fluid"></br>
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="offset1 span10 offset1">
+
+        <% @user.directed_offers.each do |offer|%>
+        <div class="span5 info-block">
+          <h3><span class="color-text">Oferta:</span></h3>
+          <div class="info-text"><b>Companía: </b><%= offer.company.name%></div>
+          <div class="info-text"><b>Detalles: </b><%= offer.description%></div>
+          <div class="info-text"><b>Expiración: </b><%= offer.expiration.strftime("%e/%m/%Y %y:%M")%></div>
+        </div>
+            <% end %>
+
+
+      </div>
+    </div>
+    <br>
+    <div class="text-center">
+
+
+      <%= link_to 'Nueva oferta', offers_directed_offer_path(:user_id => @user.id) , :class => "btn btn-danger btn-large"%>
+    </div>
+
+    <% end %>
+
   </div>
 </div>
+
+</br>
+</br>
+
 
 
