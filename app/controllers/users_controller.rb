@@ -97,7 +97,7 @@ class UsersController < ApplicationController
           if params[:user][:redirect]
             redirect_to params[:user][:redirect]
           else
-            redirect_to @user, notice: 'Sus Datos han sido actualizados.'
+            redirect_to :back, notice: 'Sus Datos han sido actualizados.'
           end
         }
         format.json { head :no_content }
