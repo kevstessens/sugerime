@@ -13,21 +13,21 @@
     <div class="row-fluid">
       <div class="offset4 span4 offset4">
 
-        <%= semantic_form_for @user do |f| %>
+        <%= form_for @user do |f| %>
 
+            <%= f.label "buscar" %> <br />
+            <%= f.text_field :need %>
 
-            <%= f.input :need, :label =>"Buscar: " %>
+            <%= f.hidden_field :redirect, :value => show_offers_path(@shopping.id) %>
 
-            <%= f.input :redirect, :as => :hidden, :value => show_offers_path(@shopping.id) %>
-            <%= f.input :keywords, :label => "Filtrar por: ", :as => :check_boxes %>
-
+            <% Keyword.all.each do |keyword| %>
+                <%= check_box_tag :keyword_ids, keyword.id, @user.keywords.include?(keyword), :name => 'user[keyword_ids][]' -%>
+                <%= label_tag :keywords_ids, keyword.name %>
+            <% end %>
             </br>
 
-            <%= f.actions do %>
-                <%= f.action :submit,  :label => "Ingresar", :html => {:class => "btn btn-danger"} %>
-                  </br>
-                <%= f.action :cancel, :label => "Cancelar" , :html => {:class => "btn btn-danger"} %>
-            <% end %>
+                <%= f.submit "Ingresar", :class => "btn btn-danger" %>
+            <%= link_to "Volver", :back, class: "btn" %>
 
 
         <% end %>

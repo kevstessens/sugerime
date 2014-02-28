@@ -13,21 +13,27 @@
 <div class="row-fluid"></br>
   <div class="span12">
     <div class="row-fluid">
-      <div class="offset1 span10 offset1">
+      <div class="offset0 span12 offset0">
 
-       <div class="span7 info-block">
-         <h3><span class="color-text">DETALLES:</span></h3>
-        <div class="info-text"><%= @shopping.description%></div>
-         <% if current_user.address.distance_to([@shopping.address.latitude,@shopping.address.longitude])*1000 < 1000%>
-             <div class="info-text"><%= link_to 'Entrar!' , shopping_path(@shopping), :class => "btn btn-danger btn-large"%></div>
-         <% end %>
-       </div>
 
-        <div class="span2"> <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %></div>
 
+        <div class="span4 info-block" align="center">
+          <h3><span class="color-text">(<%= Company.where(:shopping_id => @shopping.id).all.size %> LOCALES ACTIVOS)</span></h3>
+          <%= image_tag(@shopping.picture_url, :width => 400) if @shopping.picture.present? %>
+        </div>
+
+
+        <div class="span8 info-block">
+          <h3><span class="color-text">DETALLES:</span></h3>
+          <div class="info-text"><%= @shopping.description%></div>
+
+        </div>
       </div>
     </div>
      <div class="text-center">
+       <% if current_user.address.distance_to([@shopping.address.latitude,@shopping.address.longitude])*1000 < 1000%>
+           <%= link_to 'Entrar!' , shopping_path(@shopping), :class => "btn btn-danger btn-large"%>
+       <% end %>
        <%= link_to 'Volver al mapa', root_path, :class => "btn btn-danger btn-large"%>
      </div>
   </div>
